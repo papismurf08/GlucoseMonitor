@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/chart")
-public class CreateRecordController {
+public class ChartController {
 
     @GetMapping
     public String index() {
