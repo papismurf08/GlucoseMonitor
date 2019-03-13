@@ -1,7 +1,9 @@
 package monitor.services;
 
 import monitor.data.ChartRepository;
+import monitor.data.CreateRecordRepository;
 import monitor.models.Chart;
+import monitor.models.CreateRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,10 +11,13 @@ import org.springframework.stereotype.Service;
 public class ChartServiceImpl implements ChartService {
 
     @Autowired
-    private ChartRepository chartRepository;
+    private CreateRecordRepository createRecordRepository;
+    //private ChartRepository chartRepository;
 
     @Override
-    public Iterable<Chart> findAll() {
-        return chartRepository.findAll();
+    public Iterable<CreateRecord> findAll() {
+        return createRecordRepository.findAll();
+    //public Iterable<Chart> findAll() {
+        //return chartRepository.findAll();
     }
 }

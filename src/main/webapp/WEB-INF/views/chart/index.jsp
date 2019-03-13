@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"%>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<%--<html lang="en" xmlns:th="http://www.thymeleaf.org/">--%>
+<html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title th:text="${title}">Glucose Monitor</title>
+    <%--<title th:text="${title}">Glucose Monitor</title>--%>
+    <title>Glucose Monitor</title>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="https:www.gstatic.com/charts/loader.js"></script>
@@ -28,11 +30,14 @@
             function drawChart(result) {
 
                 var data = new google.visualization.DataTable();
-                data.addColumn('string', 'Name');
+                /*data.addColumn('string', 'Name');
+                data.addColumn('number', 'Quantity');*/
+                data.addColumn('string', 'Glucose');
                 data.addColumn('number', 'Quantity');
                 var dataArray = [];
                 $.each(result, function (i, obj) {
-                    dataArray.push([obj.name, obj.quantity]);
+                    //dataArray.push([obj.name, obj.quantity]);
+                    dataArray.push([obj.glucose, obj.quantity]);
                 });
                 data.addRows(dataArray);
 

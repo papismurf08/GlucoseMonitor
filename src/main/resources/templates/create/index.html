@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/" xmlns:text-align="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<!--<nav th:replace="fragments :: navigation"></nav>-->
+<nav th:fragment="navigation">
+    <a href="/create">Home</a> |
+    <a href="/category">Create Log Type</a> |
+</nav>
+
+<p th:unless="${stats} and ${stats.size()}">No Logs</p>
+
+<table class="table">
+    <tr>
+        <th>Glucose</th>
+        <th>Insulin</th>
+        <th>Carbs</th>
+    </tr>
+
+    <tr th:each="create : ${stats}">
+        <td th:text="${create.glucose}"></td>
+        <td th:text="${create.insulin}"></td>
+        <td th:text="${create.carbs}"></td>
+        <!--<td th:text="${create.notes}"></td>-->
+        <td th:text="${create.category.name}"></td>
+        <td><a th:href="@{'/create/edit/' + ${create.id}}">edit</a></td>
+    </tr>
+
+</table>
+
+<nav th:replace="fragments :: createnavigation"></nav>
+<br>
+<form method="POST" style="text-align: left;" th:action="@{/logout}" id="logoutForm">
+    <input type="submit" value="Logout"/>
+</form>
+
+
+</body>
+</html>

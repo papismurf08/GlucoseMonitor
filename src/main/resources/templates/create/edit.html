@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<h1 th:text="${title}">Default Title</h1>
+
+<!--<h1 th:text="'Edit Cheese \'' + ${create.name} + '\' (id=' + ${create.id} + ')'"></h1>-->
+<h1>Edit Information</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<form method="post" style="max-width:600px;" action="/create/edit">
+    <div class="form-group">
+        <label th:for="createGlucose">Glucose</label>
+        <input type="text" name="createGlucose" class="form-control" th:value="${create.glucose}"/>
+        <span th:text="${error}"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="createInsulin">Insulin</label>
+        <input type="text" name="createInsulin" class="form-control" th:value="${create.insulin}"/>
+    </div>
+    <div class="form-group">
+        <label th:for="createCarbs">Carbohydrates</label>
+        <input type="text" name="createCarbs" class="form-control" th:value="${create.carbs}"/>
+        <span th:text="${error}"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="createNote">Note</label>
+        <input type="text" name="createNote" class="form-control" th:value="${create.note}"/>
+        <span th:text="${error}"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="categoryId">Category</label>
+        <select name="categoryId">
+            <option th:each="category: ${categories}"
+                    th:text="${category.name}"
+                    th:value="${category.id}"
+                    th:selected="(${category.id} == ${create.category.id})"></option>
+        </select>
+    </div>
+    <input type="hidden" th:value="${create.id}" name="createId" />
+    <input type="submit" value="Update" />
+</form>
+
+</body>
+</html>

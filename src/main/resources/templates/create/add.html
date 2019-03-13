@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body class="container">
+<h1 th:text="${title}">Default Title</h1>
+
+<!--<nav th:replace="fragments :: navigation"></nav>-->
+<nav th:fragment="navigation">
+    <a href="/create">Home</a>
+</nav>
+
+<form th:method="POST" style="max-width:600px;" th:object="${create}">
+    <!-- this pulls in item from (new GlucoseMonitor()) -->
+
+    <div th:if="${#fields.hasErrors()}">
+        <span class="validationError">
+            Please correct the problems below
+        </span>
+    </div>
+
+        <!--<label for="name">Name</label>
+        <input class="form-control" th:field="*{name}" />
+        <span class="validationError"
+              th:if="${#fields.hasErrors('name')}"
+              th:errors="*{name}">Name Error</span>
+    <br/>-->
+        <!--<label for="type">Log Type</label>
+        <select field="*{type}">
+            <option th:each="logType : ${logTypes}"
+                    th:text="${logType.name}"
+                    th:value="${logType}"></option>
+        </select>
+    <br/>-->
+
+        <label for="glucose">Glucose</label>
+        <input class="form-control" th:field="*{glucose}" />
+        <span class="validationError"
+              th:if="${#fields.hasErrors('glucose')}"
+              th:errors="*{glucose}">Glucose Error</span>
+    <br/>
+
+         <label for="insulin">Insulin</label>
+         <input class="form-control" th:field="*{insulin}" />
+         <span class="validationError"
+               th:if="${#fields.hasErrors('insulin')}"
+               th:errors="*{insulin}">Insulin Error</span>
+    <br/>
+
+         <label for="carbs">Carbohydrates</label>
+         <input class="form-control" th:field="*{carbs}" />
+         <span class="validationError"
+               th:if="${#fields.hasErrors('carbs')}"
+               th:errors="*{carbs}">Carbohydrates Error</span>
+    <br/>
+
+         <label for="note">Note</label>
+         <input class="form-control" th:field="*{note}" />
+         <span class="validationError"
+               th:if="${#fields.hasErrors('note')}"
+               th:errors="*{note}">Note Error</span>
+    <br/>
+
+    <div class="form-group">
+        <label for="categoryId">Log</label>
+        <select name="categoryId">
+            <option th:each="category : ${categories}"
+                    th:text="${category.name}"
+                    th:value="${category.id}"></option>
+        </select>
+    </div>
+
+    <input type="submit" value="Add Data" />
+    <!-- When this value does not match value in Controller file, constructor in GlucoseMonitor greys out-->
+</form>
+
+<!--<form method="POST" th:action="@{/logout}" id="logoutForm">
+    <input type="submit" value="Logout" />
+</form>-->
+
+</body>
+</html>
+
+<!-- Changed String value from cheeseName and cheeseDescription to match names given in GlucoseMonitor model which
+    is now name and description, respectively -->

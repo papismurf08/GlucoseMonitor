@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<!--<h1 th:text="${title}">Default Tile</h1>-->
+<h1>Log Type</h1>
+
+<!--<nav th:replace="fragments :: navigation"></nav>-->
+<nav th:fragment="navigation">
+    <a href="/create">Home</a> |
+    <a th:href="@{'/category/add/'}">Add Log</a>
+</nav>
+<ul>
+    <li th:each="category: ${categories}" th:text="${category.name}"></li>
+</ul>
+
+<!--<a th:href="@{'/category/add/'}">Add Log</a>-->
+
+</body>
+</html>
