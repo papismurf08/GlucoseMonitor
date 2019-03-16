@@ -19,7 +19,7 @@
                 url: '${pageContext.request.contextPath}/api/chart/findall',
                 success: function (result) {
                     google.charts.load('current', {
-                        'packages' : ['corechart']
+                        'packages' : ['line']
                     });
                     google.charts.setOnLoadCallback(function () {
                         drawChart(result);
@@ -41,27 +41,23 @@
                 });
                 data.addRows(dataArray);
 
-                var piechart_options = {
+                var options = {
                     title: 'Line Chart: Placeholder',
-                    width: 400,
-                    height: 300
-
-                    /*curveType: 'function',
-                    legend: { position: 'bottom'}*/
+                    width: 900,
+                    height: 500
                 };
-                var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
-                piechart.draw(data, piechart_options);
+                var chart = new google.charts.Line(document.getElementById('linechart_material'));
+                chart.draw(data, google.charts.Line.convertOptions(options));
             }
         });
     </script>
 
 </head>
 <body>
-<%--<div id="curve_chart" style="width: 900px; height: 500px"></div>--%>
 
 <table class="columns">
     <tr>
-        <td><div id="piechart_div" style="border: 1px solid #ccc"></div></td>
+        <td><div id="linechart_material" style="border: 1px solid #ccc"></div></td>
     </tr>
 </table>
 
