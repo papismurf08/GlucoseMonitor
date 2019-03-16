@@ -11,13 +11,13 @@ import org.springframework.stereotype.Service;
 public class ChartServiceImpl implements ChartService {
 
     @Autowired
-    private CreateRecordRepository createRecordRepository;
-    //private ChartRepository chartRepository;
+    //private CreateRecordRepository createRecordRepository;
+    private ChartRepository chartRepository;
 
     @Override
-    public Iterable<CreateRecord> findAll() {
-        return createRecordRepository.findAll();
-    //public Iterable<Chart> findAll() {
-        //return chartRepository.findAll();
+    /*public Iterable<CreateRecord> findAll() {
+        return createRecordRepository.findAll();*/
+    public Iterable<Chart> findAll() {
+        return chartRepository.findAll();
     }
 }

@@ -20,12 +20,12 @@ public class ChartRestController {
     private ChartService chartService;
 
     @RequestMapping(value = "findall", method = RequestMethod.GET, produces = {MimeTypeUtils.APPLICATION_JSON_VALUE})
-    public ResponseEntity<Iterable<CreateRecord>> findAll() {
-    //public ResponseEntity<Iterable<Chart>> findAll() {
+    //public ResponseEntity<Iterable<CreateRecord>> findAll() {
+    public ResponseEntity<Iterable<Chart>> findAll() {
         try {
-            return new ResponseEntity<Iterable<CreateRecord>>(chartService.findAll(), HttpStatus.OK );
+            return new ResponseEntity<Iterable<Chart>>(chartService.findAll(), HttpStatus.OK );
         } catch (Exception e) {
-            return new ResponseEntity<Iterable<CreateRecord>>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<Iterable<Chart>>(HttpStatus.BAD_REQUEST);
         }
     }
 

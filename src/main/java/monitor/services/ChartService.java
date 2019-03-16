@@ -5,6 +5,6 @@ import monitor.models.CreateRecord;
 
 public interface ChartService {
 
-    Iterable<CreateRecord> findAll();
-    //Iterable<Chart> findAll();
+    //Iterable<CreateRecord> findAll();
+    Iterable<Chart> findAll();
 }

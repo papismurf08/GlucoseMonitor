@@ -30,14 +30,14 @@
             function drawChart(result) {
 
                 var data = new google.visualization.DataTable();
-                /*data.addColumn('string', 'Name');
-                data.addColumn('number', 'Quantity');*/
-                data.addColumn('string', 'Glucose');
+                data.addColumn('string', 'Name');
                 data.addColumn('number', 'Quantity');
+               /* data.addColumn('string', 'Glucose');
+                data.addColumn('number', 'Quantity');*/
                 var dataArray = [];
                 $.each(result, function (i, obj) {
-                    //dataArray.push([obj.name, obj.quantity]);
-                    dataArray.push([obj.glucose, obj.quantity]);
+                    dataArray.push([obj.name, obj.quantity]);
+                    //dataArray.push([obj.glucose, obj.quantity]);
                 });
                 data.addRows(dataArray);
 
